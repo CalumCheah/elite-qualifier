@@ -106,20 +106,20 @@ def suggest(text, all_words, common_words):
       text = text.replace(char, "")
 
   if text in all_words:
-    print(text + ' is a word')
-    return
+    return text + ' is a word'
   else:
-    print(text + ' is not a word')
+    if text == "":
+      return "Please enter a word"
     if " " in text:
       sys.stdout.write("Please wait \r")
-      suggest_sentences(text, all_words, common_words)
+      return suggest_sentences(text, all_words, common_words)
     else:
       sys.stdout.write("Please wait \r")
       suggestions = suggest_words(text, all_words, common_words)
       
       top_suggestions = ", ".join(suggestions.keys())
       if top_suggestions:
-        print(f"Suggestions: {top_suggestions}")
+        return f"Suggestions: {top_suggestions}"
 
 
 # get suggestions for individual words
@@ -188,7 +188,7 @@ def suggest_sentences(text, all_words, common_words):
   else:
     punctuation = "."    
 
-  print("Suggestion: " + " ".join(suggested_sentence) + punctuation)
+  return "Suggestion: " + " ".join(suggested_sentence) + punctuation
 
 
 def main():
@@ -207,7 +207,9 @@ def main():
         text = input(':> ')
         if ('quit' == text):
           break
-        suggest(text, all_words, common_words)
+        suggestions = suggest(text, all_words, common_words)
+        if suggestions:
+          print(suggestions)
 
 if __name__ == "__main__":
     main()

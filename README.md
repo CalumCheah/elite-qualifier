@@ -2,9 +2,9 @@
 Simple autocorrect program using edit distance and with basic grammar
 
 ## Table of Contents
-- Background
-- Install
-- Usage
+- [Background](#background)
+- [Install](#install)
+- [Usage](#usage)
 
 ## Background
 I decided to create an autocorrect program because I thought it would be interesting to learn how an autocorrect program would work.
